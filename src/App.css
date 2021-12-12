@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  width: 800px;
+  margin: auto;
 }
 
 body {
@@ -12,3 +13,4 @@ body {
   border: 3px solid #000;
   border-radius: 10px;
 }
+
