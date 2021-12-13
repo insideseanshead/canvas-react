@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import FormRange from "react-bootstrap/esm/FormRange";
 import Button from "react-bootstrap/Button";
 
@@ -11,6 +11,7 @@ const Canvas = (props) => {
     canvas.height = window.innerHeight/1.5;
     let drawing = false;
 
+    // Buttons
     const clear = document.getElementById("clear");
 
     const saveImage = document.getElementById("save");
@@ -78,7 +79,7 @@ const Canvas = (props) => {
   return (
     <div>
       <canvas ref={canvasRef} {...props} id="canvas" />;
-      <FormRange className="pen-slider" />
+      {/* <FormRange id="pen-slider" min='1' max='20' /> */}
       <Button variant="primary" id="save">
         Save
       </Button>
