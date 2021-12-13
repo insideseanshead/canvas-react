@@ -8,7 +8,7 @@ const Canvas = (props) => {
   const draw = (ctx) => {
     const canvas = document.getElementById("canvas");
     canvas.width = window.innerWidth;
-    canvas.height = 800;
+    canvas.height = window.innerHeight/1.5;
     let drawing = false;
 
     const clear = document.getElementById("clear");
@@ -43,7 +43,17 @@ const Canvas = (props) => {
 
     // Save Canvas
     const saveCanvas = () => {
-        
+        //Use toBlob to save file as png
+        canvas.toBlob(function(blob) {
+            const image = document.createElement('a')
+            const url = URL.createObjectURL(blob)
+            image.href = url;
+            image.download = 'canvas drawing.png'
+            document.body.appendChild(image)
+            image.click()
+            document.body.removeChild(image)
+            URL.revokeObjectURL(url)
+        }) 
     }
 
     // Save Canvas Image
