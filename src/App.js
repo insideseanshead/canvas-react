@@ -1,10 +1,9 @@
 import {useState} from "react";
-import Canvas from "./components/Canvas";
-import "bootstrap/dist/css/bootstrap.min.css";
 import {ChromePicker} from 'react-color'
+import Canvas from "./components/Canvas";
 import PenSlider from "./components/PenSlider";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-
 
 
 function App() {
@@ -16,7 +15,7 @@ function App() {
     <div className="App">
       <PenSlider slider={penSize} />
       <Canvas color={color} penSize={penSize} />
-      <ChromePicker color={color} onChange={update => setColor(update.hex)} />
+      <ChromePicker className='colorPicker' color={color} onChange={update => setColor(update.hex)} />
     </div>
   );
 }

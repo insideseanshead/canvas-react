@@ -74,12 +74,12 @@ const Canvas = ({props, color, penSize}) => {
   }, [draw]);
 
   return (
-    <div>
+    <div className="canvasDiv">
       <canvas ref={canvasRef} {...props} id="canvas" />;
-      <Button variant="primary" id="save">
+      <Button className='canvasButtons' variant="primary" id="save">
         Save
       </Button>
-      <Button variant="danger" id="clear">
+      <Button className='canvasButtons' variant="danger" id="clear">
         Delete
       </Button>
     </div>

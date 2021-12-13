@@ -3,7 +3,7 @@ import FormRange from "react-bootstrap/esm/FormRange";
 const PenSlider = ({ slider }) => {
   return (
     <div>
-      <FormRange
+      <FormRange className='slider'
         type="range"
         class="form-range"
         min='1'

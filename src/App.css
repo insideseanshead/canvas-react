@@ -8,3 +8,14 @@ body {
   border-radius: 10px;
 }
 
+.canvasButtons {
+  margin-left: 10px;
+}
+
+.slider {
+  margin: 10px;
+}
+
+.colorPicker {
+  margin: 10px
+}
