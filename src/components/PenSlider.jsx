@@ -1,11 +1,20 @@
-import FormRange from "react-bootstrap/esm/FormRange"
+import FormRange from "react-bootstrap/esm/FormRange";
 
-const PenSlider = ({penSize}) => {
-    return (
-        <div>
-            <FormRange type="range" class="form-range" min='1' max='10' id="customRange3" />
-        </div>
-    )
-}
+const PenSlider = ({ slider }) => {
+  return (
+    <div>
+      <FormRange
+        type="range"
+        class="form-range"
+        min='1'
+        max='10'
+        default='5'
+        value={slider.value}
+  
+        id="customRange3"
+      />
+    </div>
+  );
+};
 
-export default PenSlider
+export default PenSlider;

@@ -1,19 +1,22 @@
 import {useState} from "react";
 import Canvas from "./components/Canvas";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-import Slider from "./components/PenSlider";
+import {ChromePicker} from 'react-color'
 import PenSlider from "./components/PenSlider";
+import "./App.css";
+
+
 
 function App() {
-  const [penSize, setPenSize] = useState({
-    min:1,
-    max:10,
-  })
+  const [penSize, setPenSize] = useState(5)
+  const [color, setColor] = useState('red')
+
+ 
   return (
     <div className="App">
       <PenSlider slider={penSize} />
-      <Canvas />
+      <Canvas color={color} penSize={penSize} />
+      <ChromePicker color={color} onChange={update => setColor(update.hex)} />
     </div>
   );
 }

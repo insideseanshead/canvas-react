@@ -1,8 +1,7 @@
 import { useRef, useEffect, useState } from "react";
-import FormRange from "react-bootstrap/esm/FormRange";
 import Button from "react-bootstrap/Button";
 
-const Canvas = (props) => {
+const Canvas = ({props, color, penSize}) => {
   const canvasRef = useRef(null);
   // Drawing functions
   const draw = (ctx) => {
@@ -30,7 +29,7 @@ const Canvas = (props) => {
       if (!drawing) return;
       ctx.lineWidth = 10;
       ctx.lineCap = "round";
-
+      ctx.strokeStyle = {color}
       ctx.lineTo(e.clientX, e.clientY);
       ctx.stroke();
       ctx.beginPath();
@@ -57,8 +56,6 @@ const Canvas = (props) => {
         }) 
     }
 
-    // Save Canvas Image
-
     // Event Listeners
     canvas.addEventListener("mousedown", startDrawing);
     canvas.addEventListener("mouseup", endDrawing);
@@ -79,7 +76,6 @@ const Canvas = (props) => {
   return (
     <div>
       <canvas ref={canvasRef} {...props} id="canvas" />;
-      {/* <FormRange id="pen-slider" min='1' max='20' /> */}
       <Button variant="primary" id="save">
         Save
       </Button>
