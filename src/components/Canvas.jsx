@@ -1,12 +1,19 @@
 import { useRef, useEffect } from "react";
-import context from "react-bootstrap/esm/AccordionContext";
+import FormRange from "react-bootstrap/esm/FormRange";
+import Button from "react-bootstrap/Button";
 
 const Canvas = (props) => {
   const canvasRef = useRef(null);
   // Drawing functions
   const draw = (ctx) => {
-    const canvas = document.getElementById('canvas')
+    const canvas = document.getElementById("canvas");
+    canvas.width = window.innerWidth;
+    canvas.height = 800;
     let drawing = false;
+
+    const clear = document.getElementById("clear");
+
+    const saveImage = document.getElementById("save");
 
     const startDrawing = (e) => {
       drawing = true;
@@ -15,24 +22,40 @@ const Canvas = (props) => {
 
     const endDrawing = (e) => {
       drawing = false;
-      ctx.beginPath()
+      ctx.beginPath();
     };
 
     const drawLine = (e) => {
-        if(!drawing) return;
-        ctx.lineWidth = 10;
-        ctx.lineCap = 'round';
+      if (!drawing) return;
+      ctx.lineWidth = 10;
+      ctx.lineCap = "round";
 
-        ctx.lineTo(e.clientX, e.clientY);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(e.clientX, e.clientY)
+      ctx.lineTo(e.clientX, e.clientY);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(e.clientX, e.clientY);
     };
 
+    // Clear Canvas
+    const clearCanvas = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    };
+
+    // Save Canvas
+    const saveCanvas = () => {
+        
+    }
+
+    // Save Canvas Image
+
     // Event Listeners
-    canvas.addEventListener('mousedown', startDrawing);
-    canvas.addEventListener('mouseup', endDrawing);
-    canvas.addEventListener('mousemove', drawLine);
+    canvas.addEventListener("mousedown", startDrawing);
+    canvas.addEventListener("mouseup", endDrawing);
+    canvas.addEventListener("mousemove", drawLine);
+
+    clear.addEventListener("click", clearCanvas);
+
+    saveImage.addEventListener("click", saveCanvas)
   };
 
   useEffect(() => {
@@ -43,7 +66,16 @@ const Canvas = (props) => {
   }, [draw]);
 
   return (
-    <canvas ref={canvasRef} {...props} id="canvas" width="800" height="600" />
+    <div>
+      <canvas ref={canvasRef} {...props} id="canvas" />;
+      <FormRange className="pen-slider" />
+      <Button variant="primary" id="save">
+        Save
+      </Button>
+      <Button variant="danger" id="clear">
+        Delete
+      </Button>
+    </div>
   );
 };
 

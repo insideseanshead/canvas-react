@@ -1,12 +1,14 @@
 import FormRange from "react-bootstrap/esm/FormRange"
 import Button from 'react-bootstrap/Button'
 
-const Controls = () => {
+const Controls = (handleClear) => {
+
+
     return (
-        <div>
+        <div className='controls'>
             <FormRange className='pen-slider' />
             <Button variant='primary'>Save</Button>
-            <Button variant='danger'>Delete</Button>
+            <Button onClick={() => handleClear()} variant='danger'>Delete</Button>
         </div>
     )
 }
