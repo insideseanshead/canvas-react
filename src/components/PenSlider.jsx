@@ -1,6 +1,6 @@
 import FormRange from "react-bootstrap/esm/FormRange";
 
-const PenSlider = ({ slider }) => {
+const PenSlider = (props) => {
   return (
     <div>
       <FormRange className='slider'
@@ -9,8 +9,8 @@ const PenSlider = ({ slider }) => {
         min='1'
         max='10'
         default='5'
-        value={slider.value}
-  
+        value={props.slider.value}
+        onChange={props.changePen}
         id="customRange3"
       />
     </div>

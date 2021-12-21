@@ -10,11 +10,16 @@ function App() {
   const [penSize, setPenSize] = useState(5)
   const [color, setColor] = useState('red')
 
+  // Changing pensize state
+  const changePen = (newValue => {
+    setPenSize(newValue)
+  })
+
  
   return (
     <div className="App">
-      <PenSlider slider={penSize} />
       <Canvas color={color} penSize={penSize} />
+      <PenSlider slider={penSize} changePen={changePen} />
       <ChromePicker className='colorPicker' color={color} onChange={update => setColor(update.hex)} />
     </div>
   );
