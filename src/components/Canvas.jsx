@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 
 const Canvas = ({props, color, penSize}) => {
@@ -27,9 +27,9 @@ const Canvas = ({props, color, penSize}) => {
 
     const drawLine = (e) => {
       if (!drawing) return;
-      ctx.lineWidth = 10;
+      ctx.lineWidth = 5;
       ctx.lineCap = "round";
-      ctx.strokeStyle = {color}
+      ctx.strokeStyle = "red"
       ctx.lineTo(e.clientX, e.clientY);
       ctx.stroke();
       ctx.beginPath();

@@ -10,7 +10,7 @@ const PenSlider = (props) => {
         max='10'
         default='5'
         value={props.slider.value}
-        onChange={props.changePen}
+        onChange={(e) => props.setPenSize(Number(e.target.value))}
         id="customRange3"
       />
     </div>
